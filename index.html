@@ -7,6 +7,28 @@
     <title>Document</title>
 </head>
 <body>
-Testing 123 Hello World!!   
+
+<div id = "app">
+    {{ info }}
+
+
+</div>
 </body>
+<script src="https://unpkg.com/vue"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script>
+new Vue({
+  el: '#app',
+  data () {
+    return {
+      info: null
+    }
+  },
+  mounted () {
+    axios
+      .get('https://api.coindesk.com/v1/bpi/currentprice.json')
+      .then(response => (this.info = response))
+  }
+})
+</script>
 </html>
